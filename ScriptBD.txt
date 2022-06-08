@@ -1,0 +1,114 @@
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Versión del servidor:         10.4.21-MariaDB - mariadb.org binary distribution
+-- SO del servidor:              Win64
+-- HeidiSQL Versión:             11.3.0.6295
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+-- Volcando estructura de base de datos para abarrotes
+CREATE DATABASE IF NOT EXISTS `abarrotes` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `abarrotes`;
+
+-- Volcando estructura para tabla abarrotes.pedidos
+CREATE TABLE IF NOT EXISTS `pedidos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `producto` varchar(500) NOT NULL,
+  `id_usuario` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Volcando datos para la tabla abarrotes.pedidos: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
+
+-- Volcando estructura para tabla abarrotes.productos
+CREATE TABLE IF NOT EXISTS `productos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(500) DEFAULT NULL,
+  `categoria` varchar(500) DEFAULT NULL,
+  `id_categoria` int(11) DEFAULT 0,
+  `precio` varchar(50) DEFAULT NULL,
+  `descripcion` varchar(500) DEFAULT NULL,
+  `imagen` varchar(999) DEFAULT NULL,
+  `stock` int(11) DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=220 DEFAULT CHARSET=utf8mb4;
+
+-- Volcando datos para la tabla abarrotes.productos: ~30 rows (aproximadamente)
+/*!40000 ALTER TABLE `productos` DISABLE KEYS */;
+INSERT INTO `productos` (`id`, `nombre`, `categoria`, `id_categoria`, `precio`, `descripcion`, `imagen`, `stock`) VALUES
+	(154, 'Manzana', 'Frutas', 1, '8', 'Manzana 30 gramos alta calidad', 'https://tunuevainformacion.com/wp-content/uploads/2019/10/manzana.jpg', 36),
+	(170, 'Pera', 'Frutas', 1, '10', 'Pera 50 gramos de alta calidad', 'https://static.wixstatic.com/media/a7dee3_4c558736f7b243329c59427d855d278c~mv2.jpg/v1/fill/w_1000,h_1000,al_c,q_90/a7dee3_4c558736f7b243329c59427d855d278c~mv2.jpg', 29),
+	(171, 'Platano', 'Frutas', 1, '18', 'Platano 60 gramos de alta calidad', 'https://www.smartnfinal.com.mx/wp-content/uploads/2017/09/smart-99555-platano-portalimon.jpg', 31),
+	(172, 'Piña', 'Frutas', 1, '15', 'Piña 100 gramos de alta calidad', 'https://i0.wp.com/huertatropical.com/wp-content/uploads/2020/02/comprar-pina-online.jpg?fit=800%2C800&ssl=1', 72),
+	(173, 'Mango', 'Frutas', 1, '12', 'Mango 40 gramos de alta calidad', 'https://exoticfruitbox.com/wp-content/uploads/2015/10/mango.jpg', 53),
+	(175, 'Huevo', 'Origen animal', 2, '35', 'Huevo 50 gramos de alta calidad', 'https://topchicken.cl/wp-content/uploads/2020/04/huevos-blancos-12-unidades-600x600-1.png', 68),
+	(176, 'Leche', 'Origen animal', 2, '40', 'Leche 500 mililitros de alta calidad', 'https://cdn.shopify.com/s/files/1/0706/6309/products/7501055900039-00-CH1200Wx1200H_530x@2x.jpg?v=1626278565', 9),
+	(177, 'Atún', 'Origen animal', 2, '55', 'Atún 150 gramos de alta calidad', 'https://www.laranitadelapaz.com.mx/images/thumbs/0005378_atun-en-aceite-dolores-lata-de-140-g_510.jpeg', 24),
+	(178, 'Pescado', 'Origen animal', 2, '70', 'Pescado 700 gramos de alta calidad', 'https://us.123rf.com/450wm/meepoohyaphoto/meepoohyaphoto1602/meepoohyaphoto160200146/54338819-cipr%C3%ADnidos-o-p%C3%BAa-de-plata-est%C3%A1-en-el-pescado-de-agua-dulce-en-el-fondo-blanco-y-tienen-trazados-de-r.jpg?ver=6', 10),
+	(179, 'Pollo', 'Origen animal', 2, '85', 'Pollo 400 gramos de alta calidad', 'https://t3.ftcdn.net/jpg/00/50/56/94/360_F_50569461_LfHrBUG9a5fsbhBylMFAHL8fbggmcZPn.jpg', 42),
+	(185, 'Jugo de naranja', 'Jugos', 3, '25', 'Jugo de naranja 100 mililitros de alta calidad', 'https://res.cloudinary.com/walmart-labs/image/upload/w_960,dpr_auto,f_auto,q_auto:best/gr/images/product-images/img_large/00750105535974L.jpg', 20),
+	(186, 'Jugo de limon', 'Jugos', 3, '20', 'Jugo de limon 100 mililitros de alta calidad', 'https://s.cornershopapp.com/product-images/119977.jpg', 80),
+	(187, 'Jugo de manzana', 'Jugos', 3, '22', 'Jugo de manzana 100 mililitros de alta calidad', 'https://www.chedraui.com.mx/medias/32239052147-00-CH1200Wx1200H?context=bWFzdGVyfHJvb3R8Njg5NDN8aW1hZ2UvanBlZ3xoODYvaDg0LzExMDgyNjgzMjg1NTM0LmpwZ3w4Yjg1NGQ2OTFlMDFlODk1YzhiNGM1NjUyMTViNzZiZjk3YzdjN2ExNTRiZGViMmIzYzVlMWUzYjA5NDZlMzkz', 59),
+	(188, 'Jugo de uva', 'Jugos', 3, '24', 'Jugo de uva 100 mililitros de alta calidad', 'https://www.chedraui.com.mx/medias/7501055337446-00-CH1200Wx1200H?context=bWFzdGVyfHJvb3R8MTA2NDYwfGltYWdlL2pwZWd8aDFkL2hmNS8xMDE1MDcyNzcxMjc5OC5qcGd8MDUzYjU4MTRmYzQ1OTg1YzM0N2NjNzg0OGNiZDU5MDQ3YjRiNTE2N2M2OTA4ZTYwNDNkMjBiMWVmNDFlZTZkMw', 28),
+	(189, 'Jugo de piña', 'Jugos', 3, '21', 'Jugo de piña 100 mililitros de alta calidad', 'https://www.chedraui.com.mx/medias/7501055331680-00-CH1200Wx1200H?context=bWFzdGVyfHJvb3R8Nzc3Njd8aW1hZ2UvanBlZ3xoZjkvaDVhLzExMDc1MjU3MTA2NDYyLmpwZ3xmYTQ1N2E1YmQ3N2QxYzk4NjlhZTlkN2Y1YzQ5ZDI1OGY2ODdjYTRhM2RmZTFmMmJjNzhjZGU2MGI0YTBlYTU0', 39),
+	(190, 'Lechuga', 'Verduras', 4, '30', 'Lechuga 300 gramos de alta calidad', 'https://www.smartnfinal.com.mx/wp-content/uploads/2017/09/propiedades-de-la-lechuga.jpg', 72),
+	(191, 'Zanahoria', 'Verduras', 4, '35', 'Zanahoria 250 gramos de alta calidad', 'https://cdn.shopify.com/s/files/1/0246/3147/6308/products/zanahoria_1080x.jpg?v=1556947271', 19),
+	(192, 'Cebolla', 'Verduras', 4, '33', 'Cebolla 270 gramos de alta calidad', 'https://www.chedraui.com.mx/medias/2502908-00-CH1200Wx1200H?context=bWFzdGVyfHJvb3R8MTEyNTM0fGltYWdlL2pwZWd8aDNlL2gyYy8xMDExNTkyMTA1MTY3OC5qcGd8YmY3NmFmYzEzYWJmOWQ3ODAwNDc0YzBmMTEyNzhhOTQ5ODFlOTViMTE0MGZmMjAwYTNkNjc1OGNkYTI4OWMyMg', 64),
+	(193, 'Tomate', 'Verduras', 4, '34', 'Tomate 290 gramos de alta calidad', 'https://www.quironsalud.es/idcsalud-client/cm/images?locale=es_ES&idMmedia=2299323', 46),
+	(194, 'Calabaza', 'Verduras', 4, '31', 'Calabaza 280 gramos de alta calidad', 'https://www.gourmet4life.com/image0428/20/2058556e56bff3c5b3f83af1069e3197.jpg', 37),
+	(195, 'Cerveza corona', 'Alcohol', 5, '50', 'Cerveza corona 60 mililitros de alta calidad', 'https://itengoo.com/wp-content/uploads/2019/12/0008066095608_D-e1576523522737.jpg', 45),
+	(196, 'Cerveza modelo', 'Alcohol', 5, '60', 'Cerveza modelo 60 mililitros de alta calidad', 'https://itengoo.com/wp-content/uploads/2019/12/0008066095776_C-e1576527753235.jpg', 73),
+	(197, 'Cerveza tecate', 'Alcohol', 5, '55', 'Cerveza tecate 60 mililitros de alta calidad', 'https://www.chedraui.com.mx/medias/7501061668930-00-CH1200Wx1200H?context=bWFzdGVyfHJvb3R8NzE1MDF8aW1hZ2UvanBlZ3xoYjUvaDQ4LzEyMzExNTk0MjcwNzUwLmpwZ3wxZjlkYjM4YjZjZjdkNzNiZTJhMmVmMDFlZjJkYmM3MmVkODA2YzIwZjgwMzA0ZjRkOTY1MWIzOWRhOTAyMzA4', 35),
+	(198, 'Cerveza indio', 'Alcohol', 5, '65', 'Cerveza indio 60 mililitros de alta calidad', 'https://cdn.shopify.com/s/files/1/0297/6812/2412/products/Cervezaindiobotella355mlpza_600x.png?v=1627433673', 62),
+	(199, 'Cerveza heineken', 'Alcohol', 5, '63', 'Cerveza heineken 60 mililitros de alta calidad', 'http://cdn.shopify.com/s/files/1/0561/1683/8582/products/BotHeineken1lt_1200x1200.jpg?v=1621386610', 27),
+	(200, 'Donas', 'Postres', 6, '90', 'Donas 800 gramos de alta calidad', 'https://gusticosdemitierra.com/wp-content/uploads/2020/04/Donas..jpg', 63),
+	(201, 'Galletas', 'Postres', 6, '80', 'Galletas 700 gramos de alta calidad', 'https://previews.123rf.com/images/natika/natika1702/natika170200369/71457924-dos-galletas-de-chispas-de-chocolate-aisladas-en-el-fondo-blanco-dulces-galletas-pasteler%C3%ADa-casera-.jpg', 21),
+	(202, 'Pastel', 'Postres', 6, '85', 'Pastel 750 gramos de alta calidad', 'https://st.depositphotos.com/1068095/3276/i/950/depositphotos_32761307-stock-photo-cake.jpg', 80),
+	(203, 'Chocolate', 'Postres', 6, '95', 'Chocolate 850 gramos de alta calidad', 'https://p4.wallpaperbetter.com/wallpaper/132/975/760/chocolate-white-background-tiles-wallpaper-preview.jpg', 49),
+	(204, 'Paletas', 'Postres', 6, '75', 'Paltes 500 gramos de alta calidad', 'https://www.sanborns.com.mx/imagenes-sanborns-ii/1200/2002098264966.jpg', 27);
+/*!40000 ALTER TABLE `productos` ENABLE KEYS */;
+
+-- Volcando estructura para tabla abarrotes.usuarios
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(500) NOT NULL DEFAULT 'Usuario',
+  `username` varchar(500) NOT NULL,
+  `password` varchar(500) NOT NULL,
+  `logeado` int(11) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
+
+-- Volcando datos para la tabla abarrotes.usuarios: ~15 rows (aproximadamente)
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` (`id`, `nombre`, `username`, `password`, `logeado`) VALUES
+	(1, 'Bruno', 'a', '123', 0),
+	(2, 'Willian', 'b', '123', 0),
+	(3, 'Sinuhe', 'c', '123', 0),
+	(4, 'Paco', 'd', '123', 0),
+	(5, 'Roger', 'e', '123', 0),
+	(6, 'Emilio', 'f', '123', 0),
+	(7, 'Tostado', 'g', '123', 0),
+	(8, 'Russell', 'h', '123', 0),
+	(9, 'Abraham', 'i', '123', 0),
+	(10, 'Noris', 'j', '123', 0),
+	(11, 'Sergio', 'k', '123', 0),
+	(12, 'Luis', 'l', '123', 0),
+	(13, 'Miguel', 'm', '123', 0),
+	(14, 'Fran', 'n', '123', 0),
+	(15, 'Gabo', 'o', '123', 0),
+	(16, 'Victor', 'Victor123', '123', 1);
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
